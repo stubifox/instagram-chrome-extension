@@ -1,6 +1,6 @@
 import { RequestTypes, WebObjectType } from "./types";
 
-const queryCurrentUrl = (_cb: Function) => {
+const queryCurrentUrl = (_cb: () => void) => {
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     chrome.runtime.sendMessage({ type: "WEB_STATUS", location: tabs[0].url });
     _cb();
